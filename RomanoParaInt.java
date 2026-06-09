@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class RomanoParaInt {
 
+
+    // parte que vai verificar a letra no numero romano e retornar o valor que ela vale.
     public static int valor(char letra) {
         switch (letra) {
             case 'I': return 1;
@@ -19,15 +21,19 @@ public class RomanoParaInt {
         Scanner ler = new Scanner(System.in);
 
         System.out.println("Digite o número romano:");
+        //essa string vai ler e deixar tudo padronizado caso o usuario digite as letras em minusculo.
         String romano = ler.nextLine().toUpperCase();
 
         int resultado = 0;
 
+        //esse for vai fazer a comparação do valor atual para verificar se não se trata de um caso de subtração como IV.
         for (int i = 0; i < romano.length() - 1; i++) {
 
+            //definindo valor atual e o proximo valor para comparação usando o switch declarado lá no começo do codigo. 
             int valorAtual = valor(romano.charAt(i));
             int proximoValor = valor(romano.charAt(i + 1));
 
+            //parte que verifica se é subtração ou não
             if (valorAtual < proximoValor) {
                 resultado -= valorAtual;
             } else {
@@ -35,6 +41,7 @@ public class RomanoParaInt {
             }
         }
 
+        // ultimo valor do romano.lenght pois o for não calcula ele.
         resultado += valor(romano.charAt(romano.length() - 1));
 
         System.out.println("Resultado: " + resultado);
